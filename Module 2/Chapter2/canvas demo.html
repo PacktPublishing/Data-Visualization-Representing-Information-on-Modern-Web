@@ -1,0 +1,209 @@
+﻿<html>
+<head>
+<!--[if IE lt 9]><script src="C:\temp\excanvas\excanvas.js"></script><![endif]-->
+<script>
+function drawCircle()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	context.arc(50, 50, 25,0, 2*Math.PI);
+
+	context.fillStyle = 'blue';
+	context.fill();
+	context.stroke();
+}
+
+function fillArcs()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+
+	for(i = 1; i <= 4; i++)
+	{
+		context.beginPath();
+		context.arc(60*i, 60, 25, 0, (2*Math.PI)/i);
+		context.fillStyle = 'green';
+		context.fill();
+		context.fillStyle = "black";
+		context.textAlign = "center";
+		context.fillText( Math.round(200/i)/100 + "Pi", (60*i), 100);
+		context.closePath();
+	}
+
+}
+
+function fillRectangle()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	context.fillRect(20,20, 100, 100);
+	context.fillStyle = 'green';
+	context.fill();
+}
+
+function drawLine()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	var width=200;
+	var height=200;
+	context.beginPath();
+	context.moveTo(0,0);
+	for(i = 0; i< 100; i+=4)
+	{
+		context.lineTo(i, height-i);
+		context.lineTo(width - 1-i, height - 1 -i);
+		context.lineTo(width - 2-i, i+2);
+		context.lineTo(i+3, i+3);
+	}
+	context.closePath();
+	context.stroke();
+}
+
+function fillFreeFormShape()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	var width=200;
+	var height=200;
+	context.beginPath();
+	context.moveTo(0, 0);
+	context.lineTo(20, 30);
+	context.lineTo(40, 30);
+	context.lineTo(50, 15);
+	context.lineTo(0, 0);
+	context.closePath();
+	context.fill();
+}
+
+function fillLotsOfCircles()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	for(i =0 ; i< 10; i++)
+	{
+		context.fillStyle = "pink";
+		fillCircle(context, getRandomPoint(0, 600), getRandomPoint(0,600), getRandomPoint(0,60));
+	}
+}
+
+function fillCircle(context, x, y, radius)
+{
+	context.save();
+	context.beginPath();
+	context.fillStyle = "rgba(" + getRandomPoint(0,255) + "," + getRandomPoint(0,255) +"," + getRandomPoint(0,255) +  ",100)";
+	context.arc(x, y, radius, 0, 2* Math.PI);
+	context.fill();
+	context.restore();
+}
+
+function getRandomPoint(min, max)
+{
+	return Math.floor((Math.random()*(max-min)+1))+min;
+}
+
+function simulateContextChange()
+{
+	var context = document.getElementById('example').getContext('2d');
+	context.fillStyle = 'green';
+	context.fillRect(20,20, 100, 100);
+	canvasMethod(context, function() { context.fillStyle="red"; });
+	context.fill();
+}
+
+function canvasMethod(context, method)
+{
+	context.save();
+	method();
+	context.restore();
+}
+
+function drawImage()
+{
+	var img = new Image();
+	img.src = 'worksonmymachine.png';
+	img.onload = function(){
+		var context = document.getElementById('example').getContext('2d');
+		context.drawImage(img, 0, 0);
+	}
+}
+
+function drawScaledImage()
+{
+	var img = new Image();
+	img.src = 'worksonmymachine.png';
+	img.onload = function(){
+		var context = document.getElementById('example').getContext('2d');
+		context.drawImage(img, 0, 0, 50, 70);
+	}
+}
+
+function scaleRectangle()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	var colours = ["rgba(255,0,0,.5)", "rgba(0,255,0,.5)", "rgba(0,0,255,.5)"];
+	var x = y =10;
+	var width = height = 50;
+	for(var i = 0; i< 3; i++)
+	{
+		var scalingFactor = i+1;
+		context.save();
+		context.fillStyle = colours[i];
+		
+		context.translate(x * -i, y *-i);
+		context.scale(scalingFactor, scalingFactor);
+		context.fillRect(x, y, width, height);
+		context.restore();
+	}	
+}
+
+function translateRectangle()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	for(var i  = 0; i< 100; i++)
+	{
+		context.translate(i*10, i*10);
+		context.strokeRect(20,20, 100, 100);
+		context.translate(i*-10, i*-10);
+	}		
+}
+
+function grid()
+{
+	var example = document.getElementById('example');
+	var context = example.getContext('2d');
+	for(var i  = 0; i< 100; i++)
+	{
+		for(var j  = 0; j< 100; j++)
+		{
+			context.translate(i*10, j*10);
+			context.strokeRect(0,0, 100, 100);
+			context.translate(i*-10, j*-10);
+		}
+		
+	}		
+}
+
+</script>
+</head>
+
+<body>
+
+	<input type="button" onclick="drawCircle()" value="Draw Circle"/>
+	<input type="button" onclick="fillArcs()" value="Fill Arcs"/>
+	<input type="button" onclick="fillRectangle()" value="Fill Rectangle"/>
+	<input type="button" onclick="drawLine()" value="Draw Line"/>
+	<input type="button" onclick="fillFreeFormShape()" value="Fill Free-Form Shape"/>
+	<input type="button" onclick="fillLotsOfCircles()" value="Fill Lots of Circles"/>
+	<input type="button" onclick="simulateContextChange()" value="Simulate Context Change"/>
+	<input type="button" onclick="scaleRectangle()" value="Scale Rectangle"/>
+	<input type="button" onclick="translateRectangle()" value="Translate Rectangle"/>
+	<hr/>
+	<canvas height="1800" width="1800" id="example">
+
+	</canvas>
+
+</body>
+</html>

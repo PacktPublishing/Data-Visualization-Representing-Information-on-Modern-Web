@@ -1,0 +1,28 @@
+<html>
+	<body>
+		<style>
+			rect {
+				fill: #f3f3f3;
+				stroke: black; 
+				stroke-width: 2;
+			}
+			rect:hover
+			{
+				filter: url(#shadowFilter);
+			}
+		</style>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="graph1">
+	<defs>
+    <filter id="shadowFilter" width="175%" height="175%">
+            <feOffset result="offsetImage" in="SourceAlpha" dx="5" dy="5" />
+            <feGaussianBlur result="blurredOffset" in="offsetImage" stdDeviation="8" />
+            <feBlend in="SourceGraphic" in2="blurredOffset" mode="normal" />
+    </filter>
+  </defs>
+  <rect width="50" height="150" x="20" y="20" class="rect"/>
+  <rect width="50" height="120" x="75" y="50" />
+  <rect width="50" height="90" x="130" y="80" />
+  <rect width="50" height="60" x="185" y="110" />	
+</svg>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  svg(width="500",height="500",id="graph")
+  div(id='tip')
+      span(class="profile")
+         img(id='profileImage',width='40px',height='40px')
+      div(class='tipBanner')
+        b
+          span(id='profileName')
+        span(class="tipTextLabel")
+          b Score:
+          span(id='count',class='tipTextValue')
+        span(class="tipTextLabel")
+          b Age(days):
+          span(id='age',class='tipTextValue')
+        span(class="tipTextLabel")
+           img(src="images/upvote.png")
+           b Upvotes:
+           span(id='upvotes',class='tipTextValue')
+        span(class="tipTextLabel")
+           img(src="images/downvote.png")
+           b Downvotes:
+           span(id='downvotes',class='tipTextValue')

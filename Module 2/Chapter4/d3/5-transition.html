@@ -1,0 +1,111 @@
+<html>
+	<div id="visualization">
+
+	</div>
+
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script src="lib/d3.v3.min.js"></script>
+	<script>
+	var data = [{month: "May", value: 5},	    
+		       {month: "June", value: 4},
+		       {month: "July", value: 3},
+		       {month: "August", value: 2}, 
+		       {month: "September", value: 8},
+		       {month: "October", value: 1},
+		       {month: "November", value: 2}];
+
+		$(function()
+		{
+			var graph = d3.select("#visualization")
+						   .append("svg")
+						     .attr("width", 600)
+						     .attr("height", 500);
+
+
+			 
+
+			buildGraph(graph);
+		});
+
+		d3.scale.alternatingColor = function()
+		{
+    	   var domain, range;
+
+			function scale(x)
+			{
+				return range[domain.indexOf(x)%range.length];
+			}
+
+			scale.domain = function(x)
+			{
+				if(!arguments.length) return domain;
+				domain = x;
+				return scale;
+			}
+			
+			scale.range = function(x)
+			{
+				if(!arguments.length) return range;
+				range = x;
+				return scale;
+			}
+
+			 return scale;
+		}
+
+		function buildGraph(graph)
+		{
+	
+			var maximumValue = d3.max(data, function(item){ return item.value;});
+			var xScale = d3.scale.ordinal()
+				.domain(data.map(function(item){return item.month;}))
+				.rangeBands([0,500], .1);
+			var yScale = d3.scale.linear()
+				.domain([maximumValue, 0])
+				.range([0, 300]);
+			var colorScale = d3.scale.alternatingColor()
+								.domain(data.map(function(item){return item.month;}))
+								.range(["#423A38", "#47B8C8", "#BDB9B1"]);
+
+			var xAxis = d3.svg.axis().scale(xScale).orient("bottom");  		
+			graph.append("g")
+				.attr("class", "xAxis")
+				.attr("text-anchor", "middle")
+				.attr("transform", "translate(20,300)")
+				.call(xAxis);
+
+			var yAxis = d3.svg.axis().scale(yScale).orient("left");
+			graph.append("g")
+				.attr("class", "yAxis")
+				.attr("transform", "translate(20,6)")
+				.call(yAxis);
+
+
+			var graphData = graph.selectAll(".bar")
+							.data(data);
+		
+			graphData.attr("class", "old");
+
+			graphData.enter()
+				.append("rect");
+
+			graphData
+					.attr("x", function(item){ return xScale(item.month);})
+					.attr("y", -300)
+					.attr("height", 0)
+					.attr("width", xScale.rangeBand())
+					.attr("fill", "white")
+					.attr("height", function(item){ return 300 - yScale(item.value);})
+					.attr("y", function(item){ return yScale(item.value);})
+					.attr("class", "bar")
+					.attr("transform", "translate(20,0)")
+					.transition()
+						.duration(600)
+						.delay(function(item, index){return 100 * index;})
+						.ease("bounce")
+					    .attr("fill", function(item, index){return colorScale(item.month);});
+		}
+
+	</script>
+
+</html>

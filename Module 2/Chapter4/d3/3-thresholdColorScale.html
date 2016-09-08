@@ -1,0 +1,89 @@
+<html>
+	<div id="visualization">
+
+	</div>
+
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script src="lib/d3.v3.min.js"></script>
+	<script>
+	var data = [{month: "May", value: 5},	    
+		       {month: "June", value: 4},
+		       {month: "July", value: 3},
+		       {month: "August", value: 2}, 
+		       {month: "September", value: 8},
+		       {month: "October", value: 1},
+		       {month: "November", value: 2}];
+
+		$(function()
+		{
+			var graph = d3.select("#visualization")
+				 		  .append("svg")
+						    .attr("width", 500)
+						    .attr("height", 500);
+			buildGraph(graph);
+		});
+
+		d3.scale.threshold = function()
+		{
+    	   var domain, range, threshold;
+
+			function scale(x)
+			{
+				return x.value < threshold ? range[0] : range[1];
+			}
+
+			scale.domain = function(x)
+			{
+				if(!arguments.length) return domain;
+				domain = x;
+				return scale;
+			}
+			
+			scale.range = function(x)
+			{
+				if(!arguments.length) return range;
+				range = x;
+				return scale;
+			}
+
+			scale.threshold = function(x)
+			{
+				if(!arguments.length) return threshold;
+				threshold = x;
+				return scale;
+			}
+			 return scale;
+		}
+
+		function buildGraph(graph)
+		{
+			var maximumValue = d3.max(data, function(item){ return item.value;});
+			var xScale = d3.scale.ordinal()
+				.domain(data.map(function(item){return item.month;}))
+				.rangeBands([0, 500], .1);
+			var yScale = d3.scale.linear()
+				.domain([0, maximumValue])
+				.range([0, 300]);
+			var colorScale = d3.scale.threshold()
+								.domain(data.map(function(item){return item.month;}))
+								.range(["#423A38", "#47B8C8"])
+								.threshold(4);
+			
+			var graphData = graph.selectAll(".bar")
+							.data(data);
+		
+			var rectangles = graphData.enter()
+				.append("rect");
+
+			graphData
+					.attr("x", function(item){ return xScale(item.month);})
+					.attr("y", function(item){ return 300 - yScale(item.value);})
+					.attr("height", function(item){ return yScale(item.value);})
+					.attr("width", xScale.rangeBand())
+					.attr("fill", function(item, index){return colorScale(item);})
+					.attr("class", "bar");
+		}
+
+	</script>
+
+</html>

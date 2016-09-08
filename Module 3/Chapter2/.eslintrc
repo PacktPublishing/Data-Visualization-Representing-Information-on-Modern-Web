@@ -1,0 +1,37 @@
+/**
+ * Learning Data Visualization With D3.js, Second Edition
+ *
+ * Ændrew Rininsland, <aendrew@aendrew.com>
+ *
+ * This is the ESLint config file, .eslintrc. ESLint is used to lint our code, keeping
+ * it happy and clean. It also whines if you use double quote marks; change `rules.quotes` if
+ * you just absolutely *must* have your double-quotes. 😩😉😜
+ */
+
+{
+  "extends": "eslint:recommended",
+  "plugins": [
+    "flowtype"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jasmine": true,
+    "node": true
+  },
+  "globals": {
+    "d3": true,
+    "module": true,
+    "inject": true,
+    "require": true
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "rules": {
+    "no-console": 0,
+    "strict": 0,
+    "quotes": [2, "single", "avoid-escape"]
+  },
+  "parser": "babel-eslint",
+}

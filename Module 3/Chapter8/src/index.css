@@ -1,0 +1,85 @@
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-size: 11px;
+}
+
+.axis.dotted line,
+.axis.dotted path {
+  stroke-dasharray: 0.9;
+}
+
+.ocean {
+  fill: #759dd1;
+}
+
+
+.river {
+  fill: none;
+  stroke: #759dd1;
+  stroke-width: 1;
+}
+
+.land {
+     fill: #ede9c9;
+     stroke: #79bcd3;
+     stroke-width: 2;
+}
+   .boundary {
+     stroke: #7b5228;
+     stroke-width: 1;
+     fill: none;
+}
+   .urban {
+     fill: #e1c0a3;
+}
+
+.route {
+  stroke-width: 2px;
+  stroke: goldenrod;
+}
+
+.bar {
+  transition: all 0.25s ease-out;
+}
+
+.bar.selected {
+  fill: red;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 3em auto;
+}
+
+.words {
+  padding: 0.5em;
+  font-size: 2em;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+.bar.selected {
+  stroke: black;
+}
+
+.bar.selecting {
+  fill-opacity: 0.9;
+}
+
+.voronoi {
+  fill: none;
+  stroke: brown;
+  stroke-width: .5px;
+}

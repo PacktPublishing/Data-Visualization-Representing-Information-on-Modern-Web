@@ -1,0 +1,43 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+#tip
+{
+	width: 250px;
+	height: 100px;
+	border-style: solid;
+	border-radius: 15px;
+	pointer-events: none;
+	background-color: #f3f3f3;
+	position: absolute;
+	opacity: 0;
+}
+
+.profile
+{
+	float: left;
+}
+
+.tipBanner
+{
+	float: right;
+	width: 80%;
+}
+
+.tipTextLabel
+{
+	display: block;
+}
+
+.tipTextValue
+{
+	margin-right: 40px;
+	float: right;
+}

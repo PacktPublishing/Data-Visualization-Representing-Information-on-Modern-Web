@@ -1,0 +1,39 @@
+<html>
+	<div id="visualization">
+
+	</div>
+
+	<script src="lib/raphael-min.js"></script>
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script>
+	var data = [{month: "May", value: 5},	    
+		       {month: "June", value: 4},
+		       {month: "July", value: 3},
+		       {month: "August", value: 8}];
+
+
+		$(function()
+		{
+			var paper = Raphael("visualization", 500, 500);
+
+			var maximumValue = 0;
+			$.each(data, function(index, item)
+			{
+				if(item.value > maximumValue)
+					maximumValue = item.value;
+			});
+			$.each(data, function(index, item){
+				drawGraphColumn(paper, item, index, maximumValue);
+			});
+		});
+
+		function drawGraphColumn(paper, item, currentColumn, maximumValue)
+		{
+			var barHeight = (300 * (item.value/maximumValue));
+			var rectangle = paper.rect(currentColumn*30, 300 - barHeight, 20, barHeight);
+			rectangle.attr("fill", "rgb("+ (item.value * 40) + " ," + (item.value * 20) + "," + item.value * 20 + ")");
+			rectangle.attr("stroke-width", 2);
+		}
+	</script>
+
+</html>

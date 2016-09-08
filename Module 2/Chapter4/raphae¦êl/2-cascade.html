@@ -1,0 +1,28 @@
+<html>
+	<div id="visualization">
+
+	</div>
+
+	<script src="lib/raphael-min.js"></script>
+	<script src="lib/jquery-2.0.3.min.js"></script>
+	<script>
+		$(function()
+		{
+			var paper = Raphael("visualization", 500, 500);
+			for(counter = 0; counter < 20;)
+			{
+				drawRectangle(paper);
+			}
+		});
+
+		var counter = 0;
+		function drawRectangle(paper)
+		{
+			var rectangle = paper.rect(counter*10, counter*10, 50, 50);
+			rectangle.attr("fill", "rgb(130,130," + counter*10 + ")");
+			rectangle.attr("stroke-width", 2);
+			counter++;
+		}
+	</script>
+
+</html>

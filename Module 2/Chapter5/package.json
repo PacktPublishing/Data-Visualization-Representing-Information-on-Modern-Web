@@ -1,0 +1,11 @@
+{
+  "name": "twitter-visualization",
+  "description": "A demo of building a visualization with twitter an oauth",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.3.4",
+    "oauth": "0.9.10", 
+    "underscore": "1.5.1"
+  }
+}
