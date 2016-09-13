@@ -1,5 +1,5 @@
-# Data-Visualization--Representing-Information-on-Modern-Web
-Data Visualization: Representing Information on Modern Web by Packt Publishing
+# Data-Visualization-Representing-Information-on-Modern-Web
+Data Visualization: Representing Information on Modern Web by Packt
 
 
 ##What you will learn
