@@ -1,4 +1,4 @@
-# Data-Visualization-Representing-Information-on-Modern-Web
+# Data-Visualization Representing Information on Modern Web
 Data Visualization: Representing Information on Modern Web by Packt
 
 
