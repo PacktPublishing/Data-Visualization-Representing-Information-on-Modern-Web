@@ -12,5 +12,22 @@ This is the code repository for [Data Visualization: Representing Information on
 *Gain a solid understanding of the common D3 development idioms
 * Find out how to write basic D3 code for server using Node.js
 
+##Instructions and Navigation
+All of the code is organized into folders. Each folder starts with number followed by the application name. For example, Chapter02.
+
+You will see code something similar to the following:
+
+```
+  # needed for older Linux distributions such as Ubuntu 12 or Debian 7
+  WGET="wget --no-check-certificate"
+
+  # check if running as root
+  if [ "x`id -u`" != "x0" ] ; then
+    echo "This script is not being run as root."
+    echo "Please run it as root user by using either sudo or su command."
+    exit 1
+  fi
+```
+
 ###Note
  Modules 2 and 3 have code arranged by chapter (for the chapters that have code). [Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
