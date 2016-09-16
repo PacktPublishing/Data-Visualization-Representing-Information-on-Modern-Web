@@ -30,8 +30,10 @@ You will see code something similar to the following:
 ```
 
 ###Related **Data Visualization** Products:
-[Data Visualization: a Successful Design Process](https://www.packtpub.com/big-data-and-business-intelligence/data-visualization-successful-design-process?utm_source=github&utm_medium=repository&utm_campaign=9781849693462).
+[Data Visualization: a Successful Design Process](https://www.packtpub.com/big-data-and-business-intelligence/data-visualization-successful-design-process?utm_source=github&utm_medium=repository&utm_campaign=9781849693462)
+
 [Building Interactive Data Visualizations with D3.js](https://www.packtpub.com/web-development/building-interactive-data-visualizations-d3js-video?utm_source=github&utm_medium=repository&utm_campaign=9781783283736)
+
 [Learning Responsive Data Visualization](https://www.packtpub.com/web-development/learning-responsive-data-visualization?utm_source=github&utm_medium=repository&utm_campaign=9781785883781)
 
 
