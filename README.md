@@ -1,5 +1,5 @@
 # Data Visualization: Representing Information on Modern Web
-Data Visualization: Representing Information on Modern Web by Packt
+This is the code repository for [Data Visualization: Representing Information on Modern Web](https://github.com/PacktPublishing/Data-Visualization-Representing-Information-on-Modern-Web), published by Packt. It contains all the supporting project files necessary to work through the book from start to finish.
 
 
 ##What you will learn
