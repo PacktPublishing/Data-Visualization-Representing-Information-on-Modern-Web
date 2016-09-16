@@ -30,6 +30,7 @@ You will see code something similar to the following:
 ```
 
 ###Related **Data Visualization** Products:
+[Data Visualization: a successful design process](https://www.packtpub.com/big-data-and-business-intelligence/data-visualization-successful-design-process).
 
 
 ### Suggestions and Feedback
